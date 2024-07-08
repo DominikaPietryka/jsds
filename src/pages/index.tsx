@@ -19,9 +19,9 @@ const Home: React.FC = () => {
       </div>
 
       <div>
-        {selectedOption === '1' && <StoryButton base />}
-        {selectedOption === '2' && <StoryButton neutral />}
-        {selectedOption === '3' && <StoryButton brand />}
+        {selectedOption === '1' && <StoryButton base className="custom-class-base" />}
+        {selectedOption === '2' && <StoryButton neutral className="custom-class-neutral" />}
+        {selectedOption === '3' && <StoryButton brand className="custom-class-brand" />}
       </div>
     </div>
   );
