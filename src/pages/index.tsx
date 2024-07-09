@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import StoryButton from '../components/StoryButton';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const Home: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState('1');
+  const [selectedOption, setSelectedOption] = useLocalStorage('selectedOption', '1');
 
   return (
     <div style={{ display: 'flex', gap: '20px', padding: '20px', alignItems: 'flex-start' }}>
