@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 400px;
+}
