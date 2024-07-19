@@ -1,9 +1,8 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import StoryButton from '../components/StoryButton';
 import StoryCard from '../components/StoryCard';
+import StoryAccordion from '../components/StoryAccordion';
 import useLocalStorage from '../hooks/useLocalStorage';
 import styles from './Home.module.css';
 
@@ -19,19 +18,27 @@ const Home: React.FC = () => {
     return null;
   }
 
+  const accordionItems = [
+    { label: 'Accordion summary a', content: 'Accordion details - A' },
+    { label: 'Accordion summary b', content: 'Accordion details - B' },
+    { label: 'Accordion summary c', content: 'Accordion details - C' },
+  ];
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Home Page</title>
+        <link rel="stylesheet" href="https://starter-kit-demo.herokuapp.com/styles/index.css" />
       </Head>
       <div>
-        <select size={6} value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+        <select size={7} value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
           <option value="1">Button</option>
           <option value="2">Neutral Button</option>
           <option value="3">Brand Button</option>
           <option value="4">Card</option>
           <option value="5">Collapsed Card</option>
           <option value="6">Loading Card</option>
+          <option value="7">Accordion</option>
         </select>
       </div>
 
@@ -60,6 +67,7 @@ const Home: React.FC = () => {
             header={<span>Accounts</span>}
           />
         )}
+        {selectedOption === '7' && <StoryAccordion items={accordionItems} />}
       </div>
     </div>
   );
