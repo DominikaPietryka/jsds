@@ -10,26 +10,20 @@ interface StoryAccordionProps {
 }
 
 const StoryAccordion: React.FC<StoryAccordionProps> = ({ items }) => {
-  const [accordionItems, setAccordionItems] = useState(
-    items.map((item) => ({ ...item, isOpen: false }))
-  );
+  const [isOpens, setIsOpens] = useState(items.map(() => false));
 
   const toggleAccordion = (index: number) => {
-    setAccordionItems((prevItems) =>
-      prevItems.map((item, idx) =>
-        idx === index ? { ...item, isOpen: !item.isOpen } : item
-      )
-    );
+    setIsOpens((arr) => arr.map((item, idx) => (idx === index ? !item : item)));
   };
 
   return (
     <div className="slds-card">
       <ul className="slds-accordion">
-        {accordionItems.map((item, index) => (
+        {items.map((item, index) => (
           <li key={item.label} className="slds-accordion__list-item">
             <section
               className={`slds-accordion__section ${
-                item.isOpen ? 'slds-is-open' : ''
+                isOpens[index] ? 'slds-is-open' : ''
               }`}
               onClick={() => toggleAccordion(index)}
             >
@@ -38,7 +32,7 @@ const StoryAccordion: React.FC<StoryAccordionProps> = ({ items }) => {
                   <button
                     className="slds-button slds-button_reset slds-accordion__summary-action"
                     aria-controls={`accordion-content-${index}`}
-                    aria-expanded={item.isOpen}
+                    aria-expanded={isOpens[index]}
                     title="Accordion summary"
                   >
                     <div className="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left">
@@ -50,7 +44,7 @@ const StoryAccordion: React.FC<StoryAccordionProps> = ({ items }) => {
                   </button>
                 </h2>
               </div>
-              {item.isOpen && (
+              {isOpens[index] && (
                 <div
                   className="slds-accordion__content"
                   id={`accordion-content-${index}`}

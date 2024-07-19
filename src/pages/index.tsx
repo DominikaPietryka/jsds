@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import StoryButton from '../components/StoryButton';
 import StoryCard from '../components/StoryCard';
-import StoryAccordion from '../components/StoryAccordion'; 
+import StoryAccordion from '../components/StoryAccordion';
 import useLocalStorage from '../hooks/useLocalStorage';
 import styles from './Home.module.css';
 
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
           <option value="4">Card</option>
           <option value="5">Collapsed Card</option>
           <option value="6">Loading Card</option>
-          <option value="7">Accordion</option> {/* Add option for accordion */}
+          <option value="7">Accordion</option>
         </select>
       </div>
 
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
             header={<span>Accounts</span>}
           />
         )}
-        {selectedOption === '7' && <StoryAccordion items={accordionItems} />} {/* Add Accordion */}
+        {selectedOption === '7' && <StoryAccordion items={accordionItems} />}
       </div>
     </div>
   );
