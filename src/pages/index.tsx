@@ -3,6 +3,7 @@ import Head from 'next/head';
 import StoryButton from '../components/StoryButton';
 import StoryCard from '../components/StoryCard';
 import StoryAccordion from '../components/StoryAccordion';
+import StoryToast from '../components/StoryToast';
 import useLocalStorage from '../hooks/useLocalStorage';
 import styles from './Home.module.css';
 
@@ -31,7 +32,7 @@ const Home: React.FC = () => {
         <link rel="stylesheet" href="https://starter-kit-demo.herokuapp.com/styles/index.css" />
       </Head>
       <div>
-        <select size={7} value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+        <select size={11} value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
           <option value="1">Button</option>
           <option value="2">Neutral Button</option>
           <option value="3">Brand Button</option>
@@ -39,6 +40,10 @@ const Home: React.FC = () => {
           <option value="5">Collapsed Card</option>
           <option value="6">Loading Card</option>
           <option value="7">Accordion</option>
+          <option value="8">Toast</option>
+          <option value="9">Success Toast</option>
+          <option value="10">Warning Toast</option>
+          <option value="11">Error Toast</option>
         </select>
       </div>
 
@@ -68,6 +73,10 @@ const Home: React.FC = () => {
           />
         )}
         {selectedOption === '7' && <StoryAccordion items={accordionItems} />}
+        {selectedOption === '8' && <StoryToast type="info">26 potential duplicate leads were found.</StoryToast>}
+        {selectedOption === '9' && <StoryToast type="success">Account ACME - 100 widgets was created.</StoryToast>}
+        {selectedOption === '10' && <StoryToast type="warning">Can’t share file “report-q3.pdf” with the selected users.</StoryToast>}
+        {selectedOption === '11' && <StoryToast type="error">Can’t save lead “Sally Wong” because another lead has the same name.</StoryToast>}
       </div>
     </div>
   );
