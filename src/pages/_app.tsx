@@ -1,8 +1,12 @@
 import { AppProps } from 'next/app';
 import '../../styles/globals.css';
+import { ToastProvider } from '../hooks/useToast';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Component {...pageProps} />
+    <ToastProvider>
+      <Component {...pageProps} />
+    </ToastProvider>
   );
 }
 
